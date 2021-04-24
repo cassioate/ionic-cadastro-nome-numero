@@ -1,3 +1,69 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Contatos
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button slot="icon-only" (click)="changeEditStatus()">
+          <ion-icon [name]="enableEdit ? 'checkmark' : 'pencil'"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-card>
+        <ion-item>
+          <ion-label position="floating">Nome</ion-label>
+          <ion-input [(ngModel)]="newContact.name" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Telefone</ion-label>
+          <ion-input [(ngModel)]="newContact.number" type="number"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-button slot="end" (click)="saveContact()">
+            Salvar
+          </ion-button>
+          <ion-button slot="end" (click)="clear()">
+            Limpar
+          </ion-button>
+      </ion-item>
+
+      </ion-card>
+
+      <ion-card *ngFor="let contact of contacts">
+        <ion-item>
+          <ion-avatar slot="start">
+            <img [src]="contact.avatar">
+          </ion-avatar>
+  
+          <div *ngIf="!enableEdit">
+            <ion-label>{{contact.name}}</ion-label>
+            <ion-label>{{contact.number}}</ion-label>
+          </div>
+
+          <div *ngIf="enableEdit">
+            <input [(ngModel)]="contact.name" type="text" />
+            <input [(ngModel)]="contact.number" type="text" />
+          </div>
+
+          <ion-buttons slot="end">
+            <ion-button slot="icon-only" color="danger" (click)="deleteContact(contact)">
+              <ion-icon name="trash"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+
+        </ion-item>
+      </ion-card>
+    </ion-list>
+  </ion-content>
+
+
+  <!-- <ion-footer>
+    Opa
+  </ion-footer> -->
 </ion-app>
