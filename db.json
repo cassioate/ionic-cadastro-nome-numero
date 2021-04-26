@@ -1,0 +1,10 @@
+{
+  "contacts": [
+    {
+      "id": 6,
+      "avatar": "https://www.gravatar.com/avatar/85?s=32&d=identicon&r=PG",
+      "name": "Claudio12",
+      "number": "123"
+    }
+  ]
+}

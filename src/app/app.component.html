@@ -52,6 +52,9 @@
           </div>
 
           <ion-buttons slot="end">
+            <ion-button *ngIf="enableEdit" slot="icon-only" color="success" (click)="editContact(contact)">
+              <ion-icon name="checkmark"></ion-icon>
+            </ion-button>
             <ion-button slot="icon-only" color="danger" (click)="deleteContact(contact)">
               <ion-icon name="trash"></ion-icon>
             </ion-button>
@@ -61,9 +64,4 @@
       </ion-card>
     </ion-list>
   </ion-content>
-
-
-  <!-- <ion-footer>
-    Opa
-  </ion-footer> -->
 </ion-app>
